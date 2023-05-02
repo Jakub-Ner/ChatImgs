@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
-import { BackHandler, Alert } from 'react-native';
+import { Alert, BackHandler } from 'react-native';
 
 function useBackAction(action: () => boolean) {
   return useEffect(() => {
-    const backAction = () => action();
-
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
-      backAction,
+      action,
     );
 
     return () => backHandler.remove();
@@ -20,7 +18,7 @@ function closeApp() {
 
 
 function backAlert(description: string, onPress: () => void) {
-  Alert.alert('Hold on!', `Are you sure you want to ${description} ?`, [
+  Alert.alert('Hold on!', `Are you sure you want to ${description}?`, [
     {
       text: 'Cancel',
       onPress: () => null,

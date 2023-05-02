@@ -2,15 +2,16 @@ import { Text, TouchableHighlight, View } from 'react-native'
 import React from 'react'
 import { useNavigate } from "react-router-native";
 
-import { buttonStyles } from "../styles";
-import Header from '../components';
-import { useBackAction, closeApp } from "../hooks/useBackAction";
+import { buttonStyles } from "../utils/styles";
+import Header from '../utils/components';
+import { closeApp, useBackAction } from "../hooks/useBackAction";
 
 
 type Props = {}
 
 export default function StartScreen(props: Props) {
   const navigate = useNavigate()
+
   useBackAction(closeApp);
 
   return (

@@ -2,26 +2,37 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
 import { Text, TextInput, TouchableHighlight, View } from "react-native";
 
-import Header from "../components";
+import Header from "../utils/components";
 import { backAlert, useBackAction } from "../hooks/useBackAction";
-import { buttonStyles, styles, textInputStyles } from "../styles";
+import { buttonStyles, styles, textInputStyles } from "../utils/styles";
+import { useStableDiffusion } from "../hooks/useStableDiffusion";
+import { displayChat } from "../utils/chatType";
 
 type Props = {}
 
 export default function ChatScreen(props: Props) {
   const [text, setText] = useState("");
 
-  const onChangeText = (text: string) => {
-    setText(text)
-  }
   const navigate = useNavigate()
+  const [chat, addImg] = useStableDiffusion()
 
   useBackAction(() => backAlert("back to starting page", () => navigate("/", {})));
 
+  const onChangeText = (text: string) => {
+    setText(text)
+  }
+  const onSend = () => {
+    addImg(text)
+    setText("")
+  }
   return (
     <View style={{minHeight: "100%", position: "relative"}}>
       <Header title={"Chat"}></Header>
 
+
+      <View style={styles.theme}>
+        <Text>{displayChat(chat)}</Text>
+      </View>
 
       <View style={textInputStyles.container}>
         <TextInput style={textInputStyles.textInput}
@@ -34,7 +45,7 @@ export default function ChatScreen(props: Props) {
         <TouchableHighlight
           style={textInputStyles.button}
           {...buttonStyles.highlight}
-          onPress={() => onChangeText(text)}>
+          onPress={() => onSend()}>
           <Text style={textInputStyles.buttonText}>Send</Text>
         </TouchableHighlight>
       </View>

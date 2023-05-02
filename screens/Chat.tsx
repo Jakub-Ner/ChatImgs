@@ -22,6 +22,9 @@ export default function ChatScreen(props: Props) {
     setText(text)
   }
   const onSend = () => {
+    if (text === "") {
+      return
+    }
     addImg(text)
     setText("")
   }
@@ -30,9 +33,7 @@ export default function ChatScreen(props: Props) {
       <Header title={"Chat"}></Header>
 
 
-      <View style={styles.theme}>
-        <Text>{displayChat(chat)}</Text>
-      </View>
+      {displayChat(chat)}
 
       <View style={textInputStyles.container}>
         <TextInput style={textInputStyles.textInput}

@@ -13,11 +13,12 @@ function useStableDiffusion(): [CHAT, (prompt: string) => void] {
   const [chat, setImg] = useState<CHAT>([]);
 
   const addImg = (prompt: string): void => {
-    getBotResponse(prompt).then((message) => {
-      setImg([...chat, message]);
-      console.log("message:", message)
+    let counter = chat.length;
+    const userMsg : CHAT_MESSAGE = getUserResponse(prompt, counter);
+
+    getBotResponse(prompt, ++counter).then((message) => {
+      setImg([...chat, userMsg, message]);
     }).catch((error) => {
-      console.error("error:", error)
     });
   };
 
@@ -26,11 +27,19 @@ function useStableDiffusion(): [CHAT, (prompt: string) => void] {
   return [chat, addImg];
 }
 
-async function getBotResponse(prompt: string): Promise<CHAT_MESSAGE> {
+function getUserResponse(prompt: string, id: number): CHAT_MESSAGE {
+  return {
+    id: id,
+    message: prompt,
+    role: "user"
+  }
+}
+
+async function getBotResponse(prompt: string, id: number): Promise<CHAT_MESSAGE> {
   const img = await getImg(prompt);
   return {
-    id: 0,
-    messages: JSON.stringify(img),
+    id: id,
+    message: JSON.stringify(img, null, 0).slice(2, -2),
     role: "bot"
   }
 }

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Button, Text, TextInput, TouchableHighlight, View } from "react-native";
+import { useNavigate } from "react-router-native";
+import { Text, TextInput, TouchableHighlight, View } from "react-native";
 
 import Header from "../components";
+import { backAlert, useBackAction } from "../hooks/useBackAction";
 import { buttonStyles, styles, textInputStyles } from "../styles";
 
 type Props = {}
@@ -12,7 +14,9 @@ export default function ChatScreen(props: Props) {
   const onChangeText = (text: string) => {
     setText(text)
   }
+  const navigate = useNavigate()
 
+  useBackAction(() => backAlert("back to starting page", () => navigate("/", {})));
 
   return (
     <View style={{minHeight: "100%", position: "relative"}}>

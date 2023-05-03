@@ -15,7 +15,7 @@
     "react-native": "0.71.7",
     "react-router-native": "^6.11.1",
     "replicate": "^0.11.1",
-    "typescript": "^4.9.4",moved to root dir
+    "typescript": "^4.9.4",
     "@types/react": "~18.0.27"
   },
   "devDependencies": {

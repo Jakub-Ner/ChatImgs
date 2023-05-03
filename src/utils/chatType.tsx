@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, Text, Image, StyleSheet, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 type CHAT_MESSAGE = {
   id: number,
@@ -30,9 +30,11 @@ function displayChat(chat: CHAT | undefined): JSX.Element {
   if (!chat) {
     return (<></>);
   }
-  const comp = (<ScrollView contentContainerStyle={styles.chatContainer}>{chat.map(chatMessage)}</ScrollView>)
-  console.log((comp))
-  return comp;
+
+  return (
+    <ScrollView contentContainerStyle={styles.chatContainer}>
+      {chat.map(chatMessage)}
+    </ScrollView>);
 }
 
 export { displayChat }
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   },
   userMessageContainer: {
     alignSelf: 'flex-end',
-    backgroundColor: 'lightblue',
+    backgroundColor: 'lightblue', // <- convert to general theme
     borderRadius: 10,
     marginBottom: 10,
     maxWidth: '70%',
@@ -53,14 +55,14 @@ const styles = StyleSheet.create({
   },
   botMessageContainer: {
     alignSelf: 'flex-start',
-    backgroundColor: 'lightgray',
+    backgroundColor: 'lightgray', // <- convert to general theme
     borderRadius: 10,
     marginBottom: 10,
     maxWidth: '70%',
     padding: 10,
   },
   userMessageText: {
-    color: 'black',
+    color: 'black', // <- convert to general theme
     fontSize: 16,
   },
 });

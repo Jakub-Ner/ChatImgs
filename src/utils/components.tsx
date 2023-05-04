@@ -1,7 +1,7 @@
 import { Image, ScrollView, Text, View } from "react-native";
 import React from "react";
 
-import { headerStyles, chatBubbleStyles} from "./styles";
+import { buttonStyles, chatBubbleStyles, headerStyles } from "./styles";
 import { CHAT, CHAT_MESSAGE } from "./chatType";
 
 
@@ -45,6 +45,17 @@ function ChatBubble(props: CHAT_MESSAGE): JSX.Element {
   return (
     <View style={chatBubbleStyles.userMessageContainer} key={id}>
       <Text style={chatBubbleStyles.messageText} key={id}>{message}</Text>
+    </View>
+  )
+}
+
+export function LoadingView() {
+  console.log("Loading")
+  return (
+    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+      <View style={buttonStyles.container}>
+        <Text style={buttonStyles.text}>Loading...</Text>
+      </View>
     </View>
   )
 }

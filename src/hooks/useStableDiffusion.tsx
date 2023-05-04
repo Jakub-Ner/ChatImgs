@@ -8,22 +8,28 @@ const replicate = new Replicate({
 });
 
 
-function useStableDiffusion(): [CHAT, (prompt: string) => void] {
+function useStableDiffusion(): [CHAT, ((prompt: string) => void), boolean] {
+  const [isLoading, setIsLoading] = useState(true);
   const [chat, setImg] = useState<CHAT>([]);
 
-  const addImg = (prompt: string): void => {
+  const addImg = async (prompt: string): Promise<void> => {
     let counter = chat.length;
     const userMsg: CHAT_MESSAGE = getUserResponse(prompt, counter);
 
-    getBotResponse(prompt, ++counter).then((message) => {
+    await getBotResponse(prompt, ++counter).then((message) => {
       setImg([...chat, userMsg, message]);
     }).catch((error) => {
+      console.error("Adding image:", error.message)
     });
   };
 
-  useEffect(() => addImg("Imagination, creative, abstract, digital art"), []);
+  useEffect(() => {
+    addImg("Imagination, creative, abstract, digital art").then(() => {
+      setIsLoading(false)
+    });
+  }, []);
 
-  return [chat, addImg];
+  return [chat, addImg, isLoading];
 }
 
 function getUserResponse(prompt: string, id: number): CHAT_MESSAGE {

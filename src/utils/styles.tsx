@@ -4,15 +4,15 @@ import React from "react";
 
 export const styles = StyleSheet.create({
   theme: {
-    backgroundColor: '#F9F9F9',  // off-white background color
-    primaryColor: '#11c2e3',     // orange primary color
-    accentColor: '#7B68EE',      // slate blue accent color
-    borderRadius: 10,            // rounded corners for all elements
-    shadowOpacity: 0.2,          // slightly transparent shadow
-    shadowRadius: 4,             // blur radius of shadow
-    elevation: 0,                // elevation for Android shadow
-    fontSize: 16,                // default font size
-    fontWeight: 'bold',          // default font weight
+    backgroundColor: '#F9F9F9',
+    primaryColor: '#11c2e3',
+    accentColor: '#7B68EE',
+    borderRadius: 10,
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 0,
+    fontSize: 16,
+    fontWeight: 'bold',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
@@ -68,7 +68,6 @@ export const buttonStyles = StyleSheet.create({
     fontSize: styles.theme.fontSize,
     fontWeight: styles.theme.fontWeight,
     textAlign: 'center',
-    // height: '100%',
     textAlignVertical: 'center',
   },
 });
@@ -98,16 +97,15 @@ export const textInputStyles = StyleSheet.create({
   textInput: {
     height: "90%",
     backgroundColor: styles.theme.backgroundColor,
-    color: styles.theme.primaryColor,
+    color: styles.theme.accentColor,
     width: '80%',
   },
   button: {
-    color: styles.theme.primaryColor,
     right: '0%',
     width: '20%',
     height: '100%',
     borderColor: styles.theme.primaryColor,
-    backgroundColor: styles.theme.primaryColor, // <- is it necessary?
+    backgroundColor: styles.theme.primaryColor,
   },
   buttonText: {...buttonStyles.text, height: '100%'},
 })

@@ -74,11 +74,11 @@ export const buttonStyles = StyleSheet.create({
 
 export const textInputStyles = StyleSheet.create({
   container: {
-    position: "absolute",
-    bottom: 50,
+    bottom: 10,
     height: 40,
     width: '80%',
     marginHorizontal: '10%',
+    marginTop: 13,
     borderColor: styles.theme.primaryColor,
     borderWidth: 2,
     borderRadius: 5,
@@ -92,7 +92,6 @@ export const textInputStyles = StyleSheet.create({
     },
     shadowOpacity: styles.theme.shadowOpacity,
     shadowRadius: styles.theme.shadowRadius,
-    elevation: styles.theme.elevation,
   },
   textInput: {
     height: "90%",
@@ -112,8 +111,8 @@ export const textInputStyles = StyleSheet.create({
 
 export const chatBubbleStyles = StyleSheet.create({
   chatContainer: {
+    flexGrow: 1,
     paddingHorizontal: 10,
-    paddingVertical: 15,
   },
   userMessageContainer: {
     alignSelf: 'flex-end',
@@ -128,7 +127,7 @@ export const chatBubbleStyles = StyleSheet.create({
     backgroundColor: styles.theme.accentColor,
     borderRadius: 10,
     marginBottom: 10,
-    maxWidth: '70%',
+    maxWidth: '80%',
     padding: 10,
   },
   messageText: {

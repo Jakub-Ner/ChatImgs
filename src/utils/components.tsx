@@ -31,7 +31,7 @@ function ChatBubble(props: CHAT_MESSAGE): JSX.Element {
     if (message.startsWith("http")) {
       return (
         <View style={chatBubbleStyles.botMessageContainer} key={id}>
-          <Image source={{uri: message}} style={{width: 100, height: 100}} key={id}/>
+          <Image source={{uri: message}} style={{width: 250, height: 250}} key={id}/>
         </View>
       )
     } else {

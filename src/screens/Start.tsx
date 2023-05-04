@@ -16,7 +16,7 @@ export default function StartScreen(props: Props) {
 
   return (
     <View style={{alignItems: 'center', justifyContent: 'center'}}>
-      <Header title={"StartScreen"}></Header>
+      <Header title={"ChatImgs"}></Header>
       <StartSelector onPress={() => navigate("/chat", {})}></StartSelector>
     </View>
   )

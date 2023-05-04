@@ -48,7 +48,9 @@ function ChatMainScreen(props: {
 
   return (
     <>
-      <ChatView chat={chat}/>
+      <View style={{flex: 1}}>
+        <ChatView chat={chat}/>
+      </View>
 
       <View style={textInputStyles.container}>
         <TextInput style={textInputStyles.textInput}

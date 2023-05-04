@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import Replicate from "replicate";
 
-import TOKEN from '../utils/secrets'
 import { CHAT, CHAT_MESSAGE } from "../utils/chatType";
 
 const replicate = new Replicate({
-  auth: TOKEN,
+  auth: require('../utils/secrets.json').replicateToken,
 });
 
 
@@ -14,7 +13,7 @@ function useStableDiffusion(): [CHAT, (prompt: string) => void] {
 
   const addImg = (prompt: string): void => {
     let counter = chat.length;
-    const userMsg : CHAT_MESSAGE = getUserResponse(prompt, counter);
+    const userMsg: CHAT_MESSAGE = getUserResponse(prompt, counter);
 
     getBotResponse(prompt, ++counter).then((message) => {
       setImg([...chat, userMsg, message]);
@@ -46,13 +45,20 @@ async function getBotResponse(prompt: string, id: number): Promise<CHAT_MESSAGE>
 
 async function getImg(prompt: string = "Postman standing in front of a car.") {
   console.log("starting generating...")
-  return await replicate.run(
-    "stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf",
-    {
-      input: {
-        prompt: prompt,
-      }
-    });
+  let response = "";
+  try {
+    return await replicate.run(
+      "stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf",
+      {
+        input: {
+          prompt: prompt,
+        }
+      });
+  } catch (error) {
+    console.error("Generating image:", error.message)
+    response = "[Sorry, I couldn't generate an image for you.]"
+  }
+  return response
 }
 
 export { useStableDiffusion };

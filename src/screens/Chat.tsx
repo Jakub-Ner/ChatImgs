@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
 import { Text, TextInput, TouchableHighlight, View } from "react-native";
 
-import Header from "../utils/components";
+import { Header, ChatView } from "../utils/components";
 import { backAlert, useBackAction } from "../hooks/useBackAction";
 import { buttonStyles, styles, textInputStyles } from "../utils/styles";
 import { useStableDiffusion } from "../hooks/useStableDiffusion";
-import { displayChat } from "../utils/chatType";
 
 type Props = {}
 
@@ -32,8 +31,7 @@ export default function ChatScreen(props: Props) {
     <View style={{minHeight: "100%", position: "relative"}}>
       <Header title={"Chat"}></Header>
 
-
-      {displayChat(chat)}
+      <ChatView chat={chat}/>
 
       <View style={textInputStyles.container}>
         <TextInput style={textInputStyles.textInput}

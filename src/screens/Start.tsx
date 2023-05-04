@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigate } from "react-router-native";
 
 import { buttonStyles } from "../utils/styles";
-import Header from '../utils/components';
+import { Header } from '../utils/components';
 import { closeApp, useBackAction } from "../hooks/useBackAction";
 
 

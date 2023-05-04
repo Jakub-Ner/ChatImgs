@@ -98,16 +98,43 @@ export const textInputStyles = StyleSheet.create({
   textInput: {
     height: "90%",
     backgroundColor: styles.theme.backgroundColor,
-    color: styles.theme.accentColor,
+    color: styles.theme.primaryColor,
     width: '80%',
   },
   button: {
-    color: styles.theme.accentColor,
+    color: styles.theme.primaryColor,
     right: '0%',
     width: '20%',
     height: '100%',
-    borderColor: styles.theme.accentColor,
-    backgroundColor: styles.theme.accentColor,
+    borderColor: styles.theme.primaryColor,
+    backgroundColor: styles.theme.primaryColor, // <- is it necessary?
   },
   buttonText: {...buttonStyles.text, height: '100%'},
 })
+
+export const chatBubbleStyles = StyleSheet.create({
+  chatContainer: {
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+  },
+  userMessageContainer: {
+    alignSelf: 'flex-end',
+    backgroundColor: styles.theme.accentColor,
+    borderRadius: 10,
+    marginBottom: 10,
+    maxWidth: '70%',
+    padding: 10,
+  },
+  botMessageContainer: {
+    alignSelf: 'flex-start',
+    backgroundColor: styles.theme.accentColor,
+    borderRadius: 10,
+    marginBottom: 10,
+    maxWidth: '70%',
+    padding: 10,
+  },
+  messageText: {
+    color: styles.theme.primaryColor,
+    fontSize: 16,
+  },
+});

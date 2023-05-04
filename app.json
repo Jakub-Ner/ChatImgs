@@ -1,7 +1,13 @@
 {
   "expo": {
     "packagerOpts": {
-      "sourceExts": [ "js", "json", "ts", "tsx", "jsx"]
+      "sourceExts": [
+        "js",
+        "json",
+        "ts",
+        "tsx",
+        "jsx"
+      ]
     },
     "name": "ChatImgs",
     "slug": "ChatImgs",
@@ -24,10 +30,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jakubner.ChatImgs"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "49902920-b80b-472d-b056-dd7e80c18df7"
+      }
     }
   }
 }
